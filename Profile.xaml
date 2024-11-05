@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="inSisMobileApp.Views.Profile"
+             xmlns:Helpers="clr-namespace:inSisMobileApp.Font"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+            BackgroundColor="{AppThemeBinding Dark={StaticResource inSisBackgroundDark}, Light={StaticResource inSisBackgroundLight}}"
+            Title="Profile">
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <StackLayout Orientation="Vertical">
+
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto">
+                <Image Grid.Row="0" Source="top_background" HeightRequest="{OnPlatform iOS=200}"  Aspect="AspectFill" />
+                <toolkit:AvatarView Grid.Row="0" x:Name="UserImageAV" ImageSource="applogo.png" BorderColor="White" BorderWidth="2" WidthRequest="100" Margin="0,50,0,0" HeightRequest="100" CornerRadius="50"/>
+                <Frame IsVisible="false" Grid.Row="0" WidthRequest="100" Margin="0,50,0,0" HeightRequest="100" CornerRadius="60" HorizontalOptions="Center" VerticalOptions="End" >
+                    <Image x:Name="UserImage" Source="applogo.png" Aspect="AspectFill" WidthRequest="90" HeightRequest="90" />
+                </Frame>
+                <Label Grid.Row="1" x:Name="UserName" FontSize="25" FontAttributes="Bold" Margin="16,0,0,0" HorizontalOptions="Center"/>
+                <Label Grid.Row="2" x:Name="EmlIdEntry" Text="" FontSize="20" Margin="0,0,0,16" HorizontalOptions="Center"/>
+            </Grid>
+
+            <Grid  Margin="0,20,0,0" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+                <Frame x:Name="PersonalInfo" ClassId="PersonalInfo" Grid.Row="0" Grid.Column="0"  BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer  Tapped="ProfileFrameItem_Tapped"/>
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="ic_personalinfo.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Personal Information" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Label Text="{x:Static Helpers:MeterialIconFont.ChevronRight}" FontFamily="MeterialFontFamily" FontSize="30" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+
+                    </StackLayout>
+                </Frame>
+
+                <Frame x:Name="LogManager" ClassId="LogManager" Grid.Row="1" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ProfileFrameItem_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal" HeightRequest="50">
+                        <ImageButton Source="ic_accountsetting.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Log Manager" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Label Text="{x:Static Helpers:MeterialIconFont.ChevronRight}" FontFamily="MeterialFontFamily" FontSize="30" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+
+                    </StackLayout>
+                </Frame>
+
+
+                <Frame x:Name="ChangePassword" ClassId="ChangePassword" Grid.Row="2" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer  Tapped="ProfileFrameItem_Tapped"/>
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal" >
+                        <ImageButton Source="password.png" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Change Password" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Label Text="{x:Static Helpers:MeterialIconFont.ChevronRight}" FontFamily="MeterialFontFamily" FontSize="30" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+
+                    </StackLayout>
+                </Frame>
+
+                <Frame Grid.Row="3" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10">
+
+                    <StackLayout Orientation="Horizontal" HeightRequest="50">
+                        <ImageButton Source="ic_fingerprintsensor.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Fingerprint" VerticalOptions="Center"  Margin="10,0,0,0" FontSize="20"/>
+                        <Switch x:Name="FingerPrint" ClassId="FingerPrint" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Grid.Row="4" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10">
+
+                    <StackLayout Orientation="Horizontal" HeightRequest="50">
+                        <ImageButton Source="ic_notifications.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Alerts" VerticalOptions="Center"  Margin="10,0,0,0" FontSize="20"/>
+                        <Switch x:Name="EnableNotification" ClassId="EnableNotification" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame  Grid.Row="5" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+                    <StackLayout Orientation="Horizontal" HeightRequest="50" VerticalOptions="Start" Padding="5,0,0,8">
+                        <ImageButton Source="ic_settings.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Advance Mode" VerticalOptions="Center"  Margin="10,0,0,0" FontSize="20"/>
+                        <Switch x:Name="AdvanceMode" ClassId="AdvanceMode" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame x:Name="fr_PersonalHome" Grid.Row="6" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="ic_home_personal.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Personal Home" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Switch x:Name="PersonalHome" ClassId="PersonalHome" VerticalOptions="Center" Toggled="AdvModeOptions_CheckedChanged"  HorizontalOptions="EndAndExpand" />
+
+                    </StackLayout>
+                </Frame>
+
+                <Frame x:Name="fr_TagSearch"   Grid.Row="7" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="tagssearch.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Tag Search" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Switch x:Name="TagSearch" ClassId="TagSearch" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame x:Name="fr_TagExplorer"   Grid.Row="8" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="tagexplorer.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Tag Explorer" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Switch x:Name="TagExplorer" ClassId="TagExplorer" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame x:Name="fr_Infoview"   Grid.Row="9" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="ic_infoview.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Analytics" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Switch x:Name="Infoview" ClassId="Infoview" Toggled="AdvModeOptions_CheckedChanged"  VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame x:Name="fr_Oneview"  Grid.Row="10" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="ic_oneview.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Dashboards" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Switch  x:Name="Oneview" ClassId="Oneview" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame x:Name="fr_PFD" Grid.Row="11" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="ic_home_pfd.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Graphics" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Switch  x:Name="PFD" ClassId="PFD" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame x:Name="fr_Reports"  Grid.Row="12" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="reports.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Reports" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Switch  x:Name="Reports" ClassId="Reports" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame x:Name="fr_InfoviewSettings"   Grid.Row="13" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="ic_settings.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Infoview Settings" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Switch x:Name="InfoviewSettings" ClassId="InfoviewSettings" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame x:Name="fr_EventSummary"  Grid.Row="14" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="event.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Event Notifications" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Switch x:Name="EventSummary" ClassId="EventSummary" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame  x:Name="fr_Kpibars"  Grid.Row="15" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="prosenselogo.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="KPI's" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Switch x:Name="Kpibars" ClassId="Kpibars" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame  x:Name="fr_Asset"  Grid.Row="16" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="assetlogo.png" BackgroundColor="White"  HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Asset Summary" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Switch x:Name="Asset"  ClassId="Asset" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame  x:Name="fr_Scheduler"   Grid.Row="17" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="schedulemob.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Scheduler" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Switch x:Name="Scheduler"  ClassId="Scheduler" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame  x:Name="fr_Admindashboard" Grid.Row="18" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="admindashboard.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Admin Dashboard" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Switch x:Name="admindashboard"  ClassId="admindashboard" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+                <Frame  x:Name="fr_Notificationtask" Grid.Row="19" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="taskreport.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Task Report" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Switch x:Name="Notificationtask"  ClassId="Notificationtask" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>               
+
+                <Frame  x:Name="fr_LimsReports" Grid.Row="20" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="lims.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Quality Module" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Switch x:Name="LimsReports"  ClassId="LimsReports" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame  x:Name="fr_Sop" Grid.Row="21" Grid.Column="0" BackgroundColor="{AppThemeBinding Light=White,Dark=Transparent}" BorderColor="{AppThemeBinding Dark=DarkGray}" Padding="5" CornerRadius="5" HeightRequest="50" Margin="25,0,25,10" >
+
+                    <StackLayout Orientation="Horizontal"  HeightRequest="50">
+                        <ImageButton Source="ic_sop.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" HorizontalOptions="Start"/>
+                        <Label Text="Sop" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" FontSize="20"/>
+                        <Switch x:Name="Sop"  ClassId="Sop" Toggled="AdvModeOptions_CheckedChanged" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+
+
+</ContentPage>
